@@ -24,11 +24,11 @@ export async function Navbar() {
                     </Link>
 
                     {categories.length ? (
-                        <ul className='hidden gap-6 text-sm md:flex md:items-center'>
+                        <ul className='capitalize hidden gap-6 text-sm md:flex md:items-center'>
                             <li key='all'>
                                 <Link
                                     href='/search'
-                                    className='capitalize text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300'
+                                    className='text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300'
                                 >
                                     All
                                 </Link>
@@ -38,7 +38,7 @@ export async function Navbar() {
                                 <li key={category}>
                                     <Link
                                         href={`/search/${category}`}
-                                        className='capitalize text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300'
+                                        className='text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300'
                                     >
                                         {category}
                                     </Link>

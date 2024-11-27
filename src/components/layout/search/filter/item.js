@@ -14,7 +14,7 @@ function PathFilterItem({ item }) {
     newParams.delete('q');
 
     return (
-        <li className="capitalize mt-2 flex text-black dark:text-white">
+        <li className='mt-2 flex text-black dark:text-white'>
             <DynamicTag
                 href={createUrl(item.path, newParams)}
                 className={`w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100 ${active ? 'underline underline-offset-4' : ''
@@ -41,7 +41,7 @@ function SortFilterItem({ item }) {
     const DynamicTag = active ? 'p' : Link;
 
     return (
-        <li className="mt-2 flex text-sm text-black dark:text-white">
+        <li className='mt-2 flex text-sm text-black dark:text-white'>
             <DynamicTag
                 prefetch={!active ? false : undefined}
                 href={href}
