@@ -34,7 +34,7 @@ export async function Navbar() {
                                 </Link>
                             </li>
 
-                            {categories.slice(0, 2).map((category, index) => (
+                            {categories.slice(0, 2).map((category) => (
                                 <li key={category}>
                                     <Link
                                         href={`/search/${category}`}
@@ -46,13 +46,6 @@ export async function Navbar() {
                             ))}
                         </ul>
                     ) : null}
-                    {/* <ul>
-                        {categories.slice(0, 2).map((category, index) => (
-                            <>
-                                <li key={category}>{category}</li>
-                            </>
-                        ))}
-                    </ul> */}
                 </div>
             </div>
         </nav>
