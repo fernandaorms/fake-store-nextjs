@@ -1,7 +1,9 @@
+const { DEFAULT_CURRENCY_CODE } = process.env;
+
 const Price = ({
     amount,
     className = '',
-    currencyCode = 'USD',
+    currencyCode = DEFAULT_CURRENCY_CODE,
     currencyCodeClassName = ''
 }) => (
     <p suppressHydrationWarning={true} className={className}>

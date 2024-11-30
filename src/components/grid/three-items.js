@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { GridTileImage } from './tile';
 import { getProducts } from '@/api';
 
+const { DEFAULT_CURRENCY_CODE } = process.env;
+
 function ThreeItemGridItem({ item, size, priority }) {
     const containerClasses =
         size === 'full' ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2 md:row-span-1';
@@ -28,7 +30,7 @@ function ThreeItemGridItem({ item, size, priority }) {
                         position: labelPosition,
                         title: item.title,
                         amount: item.price,
-                        currencyCode: 'USD'
+                        currencyCode: DEFAULT_CURRENCY_CODE
                     }}
                 />
             </Link>
