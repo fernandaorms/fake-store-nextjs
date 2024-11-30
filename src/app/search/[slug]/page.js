@@ -3,6 +3,6 @@ export default async function Page({ params }) {
 
     return (
 
-        <div>My Post: {slug}</div>
+        <div>Search: {slug}</div>
     );
 }
