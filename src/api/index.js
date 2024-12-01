@@ -6,6 +6,7 @@ export const SINGLE_CATEGORY_URL = API_URL + 'products/category/';
 
 const { NEXT_PUBLIC_BASE_URL } = process.env;
 
+
 export async function getProducts() {
     const response = await fetch(PRODUCTS_URL);
     if (!response.ok) {

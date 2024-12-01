@@ -17,7 +17,7 @@ export default async function Footer() {
         { path: '/about', title: 'About' },
         { path: '/terms-conditions', title: 'Terms & Conditions' },
         { path: '/privacy-policy', title: 'Privacy Policy' },
-        { path: '/frequently-asked-questions', title: 'FAQ' },
+        { path: '/faq', title: 'FAQ' },
     ];
 
     return (

@@ -1,3 +1,5 @@
 {
-    "title": "About"
+    "title": "About",
+    "body": "<p>Welcome to our e-commerce platform!</p><p>This project is an adaptation of the <a class='font-bold' 'href='https://vercel.com/templates/next.js/nextjs-commerce' target='_blank'>Next.js Commerce</a> template by Vercel, now built with JavaScript and using the <a class='font-bold' href='https://fakestoreapi.com/' target='_blank'>FakeStoreAPI</a> for product data.</p>",
+    "updatedAt": "2024-12-01"
 }
