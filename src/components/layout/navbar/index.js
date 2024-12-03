@@ -4,6 +4,7 @@ import Link from 'next/link';
 import LogoSquare from '@/components/icons/logo-square';
 import { getCategories } from '@/api';
 import Search, { SearchSkeleton } from './search';
+import MobileMenu from './mobile-menu';
 
 const { SITE_NAME } = process.env;
 
@@ -13,7 +14,9 @@ export async function Navbar() {
     return (
         <nav className='relative flex items-center justify-between p-4 lg:px-6'>
             <div className='block flex-none md:hidden'>
-                MobileMenu
+                <Suspense fallback={null}>
+                    <MobileMenu menu={categories} />
+                </Suspense>
             </div>
 
             <div className='flex w-full items-center'>
