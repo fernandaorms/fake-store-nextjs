@@ -1,10 +1,10 @@
-const { API_URL } = process.env;
+import { notFound } from 'next/navigation';
+
+const { API_URL, NEXT_PUBLIC_BASE_URL } = process.env;
 
 export const PRODUCTS_URL = API_URL + 'products';
 export const CATEGORIES_URL = API_URL + 'products/categories';
 export const SINGLE_CATEGORY_URL = API_URL + 'products/category/';
-
-const { NEXT_PUBLIC_BASE_URL } = process.env;
 
 
 function filterProducts(products, query) {
@@ -71,6 +71,12 @@ export async function getPage(filename) {
     }
 
     const FILE_URL = `${NEXT_PUBLIC_BASE_URL}/json/${filename}.json`;
+
+    const headResponse = await fetch(FILE_URL, { method: 'HEAD' });
+    if (!headResponse.ok) {
+        notFound();
+    }
+
     const response = await fetch(FILE_URL);
 
     if (!response.ok) {
