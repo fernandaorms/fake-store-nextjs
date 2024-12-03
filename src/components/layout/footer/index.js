@@ -47,7 +47,7 @@ export default async function Footer() {
 
                 <div className='md:ml-auto'>
                     <Link
-                        href='https://github.com/fernandaorms'
+                        href='https://github.com/fernandaorms/fake-store-nextjs'
                         className='flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-sm text-black dark:border-neutral-700 dark:bg-black dark:text-white'
                         aria-label='View source on Github'
                         target='_blank'
