@@ -39,7 +39,7 @@ function ThreeItemGridItem({ item, size, priority }) {
 }
 
 export async function ThreeItemGrid() {
-    const products = await getProducts();
+    const products = await getProducts({});
 
     if (!products[0] || !products[1] || !products[2]) return null;
 

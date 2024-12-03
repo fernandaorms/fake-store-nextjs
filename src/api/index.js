@@ -7,12 +7,37 @@ export const SINGLE_CATEGORY_URL = API_URL + 'products/category/';
 const { NEXT_PUBLIC_BASE_URL } = process.env;
 
 
-export async function getProducts() {
-    const response = await fetch(PRODUCTS_URL);
+function filterProducts(products, query) {
+    return products.filter(product => {
+        const queryStr = query.toString().toLowerCase(); // Converter o valor de busca para string e minúsculas
+        return (
+            product.title.toLowerCase().includes(queryStr) ||
+            // product.category.toLowerCase().includes(queryStr) ||
+            product.price.toString().toLowerCase().includes(queryStr)
+        );
+    });
+}
+
+
+export async function getProducts({sortKey, query}) {
+    let newURL = PRODUCTS_URL;
+
+    if(sortKey) newURL += '?sort=' + sortKey;
+
+    const response = await fetch(newURL);
     if (!response.ok) {
         throw new Error('Failed to fetch products');
     }
-    return response.json();
+
+    const products = await response.json();
+
+    if(query) {
+        const filteredProducts = filterProducts(products, query);
+        return filteredProducts;
+    }
+
+
+    return products;
 }
 
 

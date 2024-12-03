@@ -5,7 +5,7 @@ import { GridTileImage } from './grid/tile';
 const { DEFAULT_CURRENCY_CODE } = process.env;
 
 export async function Carousel() {
-    const products = await getProducts();
+    const products = await getProducts({});
 
     if (!products?.length) return null;
 
