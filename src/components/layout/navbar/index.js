@@ -1,6 +1,9 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
+
 import LogoSquare from '@/components/icons/logo-square';
 import { getCategories } from '@/api';
+import Search, { SearchSkeleton } from './search';
 
 const { SITE_NAME } = process.env;
 
@@ -9,6 +12,10 @@ export async function Navbar() {
 
     return (
         <nav className='relative flex items-center justify-between p-4 lg:px-6'>
+            <div className='block flex-none md:hidden'>
+                MobileMenu
+            </div>
+
             <div className='flex w-full items-center'>
                 <div className='flex w-full md:w-1/3'>
                     <Link
@@ -46,6 +53,16 @@ export async function Navbar() {
                             ))}
                         </ul>
                     ) : null}
+                </div>
+
+                <div className='hidden justify-center md:flex md:w-1/3'>
+                    <Suspense fallback={<SearchSkeleton />}>
+                        <Search />
+                    </Suspense>
+                </div>
+
+                <div className='flex justify-end md:w-1/3'>
+                    Cart
                 </div>
             </div>
         </nav>
