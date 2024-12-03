@@ -9,7 +9,7 @@ const { NEXT_PUBLIC_BASE_URL } = process.env;
 
 function filterProducts(products, query) {
     return products.filter(product => {
-        const queryStr = query.toString().toLowerCase(); // Converter o valor de busca para string e minúsculas
+        const queryStr = query.toString().toLowerCase();
         return (
             product.title.toLowerCase().includes(queryStr) ||
             // product.category.toLowerCase().includes(queryStr) ||
@@ -38,6 +38,21 @@ export async function getProducts({sortKey, query}) {
 
 
     return products;
+}
+
+export async function getProductsByCategory({sortKey, category}) {
+    let newURL = SINGLE_CATEGORY_URL;
+
+    newURL += category;
+
+    if(sortKey) newURL += '?sort=' + sortKey;
+
+    const response = await fetch(newURL);
+    if (!response.ok) {
+        throw new Error('Failed to fetch products');
+    }
+
+    return response.json();
 }
 
 
