@@ -40,6 +40,19 @@ export async function getProducts({sortKey, query}) {
     return products;
 }
 
+export async function getProductById({id}) {
+    let newURL = PRODUCTS_URL;
+
+    newURL += '/' + id;
+
+    const response = await fetch(newURL);
+    if (!response.ok) {
+        throw new Error('Failed to fetch products');
+    }
+
+    return response.json();
+}
+
 export async function getProductsByCategory({sortKey, category}) {
     let newURL = SINGLE_CATEGORY_URL;
 
