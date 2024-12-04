@@ -28,6 +28,7 @@ export default async function Page({ params }) {
                                     sizes='(min-width: 1024px) 66vw, 100vw'
                                     alt={product.title}
                                     src={product.image}
+                                    priority={true}
                                 />
                             </div>
                         </Suspense>

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 const { API_URL, NEXT_PUBLIC_BASE_URL } = process.env;
 
+export const CART_URL = API_URL + 'carts';
 export const PRODUCTS_URL = API_URL + 'products';
 export const CATEGORIES_URL = API_URL + 'products/categories';
 export const SINGLE_CATEGORY_URL = API_URL + 'products/category/';
@@ -94,6 +95,20 @@ export async function getPage(filename) {
 
     if (!response.ok) {
         throw new Error(`Failed to fetch ${filename}`);
+    }
+
+    return response.json();
+}
+
+
+export async function getCartById({id}) {
+    let newURL = CART_URL;
+
+    newURL += '/' + id;
+
+    const response = await fetch(newURL);
+    if (!response.ok) {
+        throw new Error('Failed to fetch products');
     }
 
     return response.json();

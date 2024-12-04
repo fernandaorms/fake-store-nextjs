@@ -2,7 +2,8 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 
 import LogoSquare from '@/components/icons/logo-square';
-import { getCategories } from '@/api';
+import CartModal from '@/components/cart/modal';
+import { getCategories, getCartById, getProductById } from '@/api';
 import Search, { SearchSkeleton } from './search';
 import MobileMenu from './mobile-menu';
 
@@ -10,6 +11,9 @@ const { SITE_NAME } = process.env;
 
 export async function Navbar() {
     const categories = await getCategories();
+    const cart = await getCartById({ id: 1 });
+
+    const newCart = await cartFetchProductDetails(cart);
 
     return (
         <nav className='relative flex items-center justify-between p-4 lg:px-6'>
@@ -65,9 +69,26 @@ export async function Navbar() {
                 </div>
 
                 <div className='flex justify-end md:w-1/3'>
-                    Cart
+                    <CartModal cart={newCart} />
                 </div>
             </div>
         </nav>
     )
+}
+
+async function cartFetchProductDetails(cart) {
+    const productsWithDetails = [];
+    let total = 0;
+
+    for (const product of cart.products) {
+        const productDetails = await getProductById({id: product.productId});
+        productsWithDetails.push({
+            ...product,
+            product: productDetails
+        });
+
+        total += product.quantity * productDetails.price;
+    }
+
+    return { ...cart, products: productsWithDetails, total: total.toFixed(2)};
 }
