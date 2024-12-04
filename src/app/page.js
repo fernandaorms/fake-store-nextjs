@@ -6,7 +6,10 @@ import OfferCarousel from "@/components/offer-carousel";
 export default function Home() {
     return (
         <>
-            <OfferCarousel />
+            <div className='mb-10'>
+                <OfferCarousel />
+            </div>
+            
             <ThreeItemGrid />
             <Carousel />
             <Footer />
