@@ -39,7 +39,7 @@ export default function OfferCarousel() {
                             <Typography
                                 variant='h2'
                                 color='white'
-                                className='mb-12 opacity-80'
+                                className='mb-12 opacity-80 text-4xl'
                             >
                                 {offer.price.toFixed(2)}
                             </Typography>
